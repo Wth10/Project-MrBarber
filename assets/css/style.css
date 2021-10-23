@@ -1,59 +1,57 @@
 body {
   color: #fff;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   overflow: hidden;
   position: relative;
 }
 
-
-
-
-
 /*Header*/
-.navbar .navbar-collapse  {
+.navbar .navbar-collapse {
   text-align: right;
 }
-.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .show > .nav-link {
   border-bottom: none;
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.516);
   text-decoration-thickness: 2px;
 }
-.navbar-toggler:focus, .navbar-toggler {
+.navbar-toggler:focus,
+.navbar-toggler {
   box-shadow: none;
   border: 1px solid rgba(255, 255, 255, 0.516);
 }
 .nav-bg {
   background-color: #121214cd;
-  transition: .2s;
+  transition: 0.2s;
 }
 .nav-logo {
   max-height: 60px;
-  transition: .2s;
+  transition: 0.2s;
 }
 .nav-bg .nav-logo {
   max-height: 60px;
-  transition: .2s;
+  transition: 0.2s;
 }
 .offcanvas {
   background-color: var(--bs-dark);
-  width : 250px !important;
+  width: 250px !important;
 }
-.offcanvas[style="visibility: visible;"]{
+.offcanvas[style="visibility: visible;"] {
   padding: 2%;
 }
- .btn-close {
+.btn-close {
   color: white;
 }
 
 /*Hero*/
 .hero-section::before {
   content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
   background-image: url("../img/bg.jpg");
   background-size: cover;
   background-position: right 25% bottom 45%;
@@ -75,33 +73,31 @@ body {
   font-weight: 600;
 }
 
-
 /*Services*/
 .services-section .card {
   background-color: none;
-  transition: .3s;
+  transition: 0.3s;
   opacity: 0.6;
   text-align: center;
   border: none;
   filter: grayscale(100%);
 }
-.services-section .card:hover  {
+.services-section .card:hover {
   opacity: 1;
-  transition: .3s;
+  transition: 0.3s;
   cursor: pointer;
   filter: grayscale(0%);
 }
 .services-section {
   padding: 6%;
   background-color: #121214;
-
 }
 
 /*Sobre*/
 .about-section {
   color: white;
-  background-color: #222224;
-  padding: 6%;
+  background-color: #121214;
+  padding: 3%;
 }
 
 /*Contato*/
@@ -111,22 +107,21 @@ body {
   padding: 6%;
 }
 
-
 /*Preloader*/
 #preloader {
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background-color:#121214;
-  z-index: 999; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #121214;
+  z-index: 999;
 }
 #preloader .inner {
   position: absolute;
-  top: 50%; 
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);  
+  transform: translate(-50%, -50%);
 }
 .bolas > div {
   display: inline-block;
@@ -142,15 +137,15 @@ body {
   animation-iteration-count: infinite;
 }
 .bolas > div:nth-child(1) {
-  animation-duration:0.75s ;
+  animation-duration: 0.75s;
   animation-delay: 0;
 }
 .bolas > div:nth-child(2) {
-  animation-duration: 0.75s ;
+  animation-duration: 0.75s;
   animation-delay: 0.12s;
 }
 .bolas > div:nth-child(3) {
-  animation-duration: 0.75s  ;
+  animation-duration: 0.75s;
   animation-delay: 0.24s;
 }
 
@@ -168,16 +163,17 @@ body {
   33% {
     -webkit-transform: scale(1);
     transform: scale(1);
-    opacity: 1; 
-  } 
+    opacity: 1;
+  }
 }
-.btn-close{
+.btn-close {
   color: white;
 }
 
 /*Responsividade*/
 @media only screen and (max-width: 760px) {
-  .nav-bg .nav-logo, .nav-logo {
+  .nav-bg .nav-logo,
+  .nav-logo {
     max-height: 72px;
   }
   .hero-section::before {
