@@ -56,6 +56,6 @@ Cliente:
 - Consulta histórico de agentamentos (agentamentos status concluído);
 - Agendar serviço (funcionários ativos);
 
-Criar redes sociais (Victor)
+Criar redes sociais (ADM)
 
 Twitter | Facebook | Instagram
