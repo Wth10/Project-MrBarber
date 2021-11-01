@@ -21,6 +21,8 @@ Profissional:
 - Cadastra serviços;
 - Cadastar funcionario;
 
+---
+
 Funcionário Do Profissional:
 
 - Login
