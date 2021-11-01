@@ -113,7 +113,7 @@ $resultadoServico = obterServicos();
                 
                 <main class="conteudo col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <h2>Seus Serviços <?php echo $usuario -> get_nome(); ?></h2>
-                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#popupFuncionario">
+                    <button type="button"  class="btn btn-primary btn-sm" href="popupAgendamento" data-bs-toggle="modal" data-bs-target="#popupAgendamento">
                         Cadastrar Serviços
                     </button>
                     <div class="table-responsive">
@@ -135,7 +135,7 @@ $resultadoServico = obterServicos();
                                         </button>
                                     </th>
                                     <th>
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#popupFuncionario">
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#popupFuncionario">
                                             Excluir
                                         </button>
                                     </th>
@@ -149,12 +149,11 @@ $resultadoServico = obterServicos();
                                         </button>
                                     </th>
                                     <th>
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#popupFuncionario">
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#popupFuncionario">
                                             Excluir
                                         </button>
                                     </th>
                                 </tr>
-
                             <tbody>
                             </tbody>
                         </table>
@@ -166,76 +165,37 @@ $resultadoServico = obterServicos();
                     <div class="modal-dialog modal-lg  modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Faça Seu Agendamento</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Cadastre Seu Serviço</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form action="#" class="form-agendamento">
+                                    <div class="input-group col-sm-12 input-group-sm mb-1">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Serviço:</span>
+                                        </div>
+                                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
                                     <div class="row g-3 align-items-center">
                                         <div class="col-sm-6">
-                                            <input type="date" min="<?php echo date('Y-m-d');?>" max="2021-12-25" class="form-control" id="data" placeholder="Data">
-                                        </div>
-                                        <div class="col-sm-6">
                                             <select name="" id="" class="form-select">
-                                                <option selected>08:00</option>
-                                                <option value="">09:00</option>
-                                                <option value="">10:00</option>
-                                                <option value="">11:00</option>
-                                                <option value="">12:00</option>
-                                                <option value="">13:00</option>
-                                                <option value="">14:00</option>
-                                                <option value="">15:00</option>
-                                                <option value="">16:00</option>
-                                                <option value="">17:00</option>
-                                                <option value="">18:00</option>
+                                                <option selected>Status</option>
+                                                <option>Ativo</option>
+                                                <option>Inativo</option>
                                             </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select name="" id="" class="form-select">
-                                                <option selected>Serviços</option>
-                                                <?php echo $resultadoServico;?>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select name="" id="" class="form-select">
-                                                <option selected>Profissional</option>
-                                                <?php echo $resultado;?>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select name="" id="" class="form-select">
-                                                <option selected>Barbearias</option>
-                                                <option value="">Barber Shop t.h.r</option>
-                                                <option value="">Matheus Barber</option>
-                                                <option value="">Barbearia Dos Amigos</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select name="" id="" class="form-select">
-                                                <option selected>Unidades</option>
-                                                <option value="">Salvador - Parque Bela Vista</option>
-                                                <option value="">Itubana - Jardim Primavera</option>
-                                                <option value="">Porto Seguro - Baianão</option>
-                                                <option value="">Ilhéus - Bela Visão</option>
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Messagem"></textarea>
-                                            </div>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </form>      
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary">Agendar Agora</button>
+                                <button type="button" class="btn btn-primary">Cadastrar</button>
                             </div>
                         </div>
                      </div>
                 </div>                          
             </main>
+            
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>

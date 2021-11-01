@@ -86,13 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="card-header">
                             <h3>Faça seu Cadastro</h3>
                         </div>
-                        <div class="col-sm-5">
-                            <select name="" id="" class="form-select">
-                                <option selected>Cadastrar Como</option>
-                                <option value="">Profissional</option>
-                                <option value="">Cliente</option>
-                            </select>
-                        </div>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option selected>Cadastrar Como</option>
+                            <option value="2">Cliente</option>
+                            <option value="1">Profissional</option>    
+                        </select>
                         <div class="card-body">
                             <form action="Cadastro.php" method="POST">
                                 <div class="input-group form-group py-1">
