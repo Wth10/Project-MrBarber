@@ -1,5 +1,5 @@
 <?php
-require '../banco/banco.php';
+require '../ConectBanco/Banco.php';
 
 const TIPO_USUARIO_CLIENTE = 2; 
 const STATUS_CLIENTE_ATIVO = 0; 

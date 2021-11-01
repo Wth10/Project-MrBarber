@@ -1,7 +1,7 @@
 
 <?php
-require '../clientes/cliente.php';
-require '../usuario/usuario.php';
+require '../Cadastro/Cliente.php';
+require '../Utilidades/Usuario.php';
 
 $MensagemErro = "";
 
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = new Usuario($email, $senha);
 
     if($usuario -> Logar($email, $senha)) {
-        header('Location: ../dashboard/dashboard.php');
+        header('Location: ../AreaCliente/Cliente.php');
     }
     else {
         $MensagemErro = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i> <span>Email ou Senha Inválidos!</span> </div>';
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
     <head>
         <!--Favicon-->
-        <link rel="shortcut icon" href="../assets/img/favicon.png">
+        <link rel="shortcut icon" href="../Detalhes/img/favicon.png">
         <meta charset="UTF-8"/>
         <!--Fonte-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!--Bootstrap CSS-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <!--CSS-->
-        <link rel="stylesheet" href="../assets/css/style.css"> 
+        <link rel="stylesheet" href="../Detalhes/css/style.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body databs-spy="scroll" data-bs-target=".nav-bg">
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                 <div class="container">
-                    <a href="../index.html#home"><img src="../assets/img/logo.png" alt="logo mr barbers" class="nav-logo"></a>
+                    <a href="../index.html#home"><img src="../Detalhes/img/logo.png" alt="logo mr barbers" class="nav-logo"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <h3>Faça seu Login</h3>
                         </div>
                         <div class="card-body">
-                            <form action="login.php" method="POST">
+                            <form action="Login.php" method="POST">
                                 <div class="input-group form-group py-1">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                     <input type="email" name="email" class="form-control" placeholder="Email" required>
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-center links">
-                                <span><a href="../clientes/cadastro.php">Criar Cadastro</a> ou <a href="#sextou">Resetar Senha</a></span>
+                                <span><a href="../Cadastro/Cadastro.php">Criar Cadastro</a> ou <a href="#sextou">Resetar Senha</a></span>
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!--Javascript-->
-    <script src="../assets/js/main.js"></script>
+    <script src="../Detalhes/js/main.js"></script>
     <script>
     //Remove a classe msgErro apos 5s
         setTimeout(function() {
