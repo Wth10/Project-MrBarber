@@ -40,4 +40,4 @@ Criar redes sociais - (ADM)
 
 ### A FAZER:
 
-- [] Validação
+- [ ] Validação
