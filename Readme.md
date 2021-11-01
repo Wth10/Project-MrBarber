@@ -31,14 +31,13 @@ Funcionário Do Profissional:
 
 Cliente:
 
-1. IMPORTANTE:
-
 - Login;
 - Agendar serviço;
 - Consultar agendamentos;
 - Consulta histórico de agentamentos;
 
 **(Vai so exibir os historica como status, profissional, serviço e hora-data);**
+<br/>
 **_(Ver status, Ver local da barbearia, Serviço, Profissional, Data e Hora: talvez falar com o profissional via WhatsApp:);_**;
 
 ---
