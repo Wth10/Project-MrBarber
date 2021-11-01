@@ -12,9 +12,7 @@
 
 ---
 
-### PONTOS IMPORTANTES:
-
-Profissional:
+### Profissional:
 
 - Login;
 - Ver seus agendamento;
@@ -23,7 +21,7 @@ Profissional:
 
 ---
 
-Funcionário Do Profissional:
+### Funcionário Do Profissional:
 
 - Login
 - Consulta agendamentos
@@ -31,7 +29,7 @@ Funcionário Do Profissional:
 
 ---
 
-Cliente:
+### Cliente:
 
 - Login;
 - Agendar serviço;
@@ -40,7 +38,7 @@ Cliente:
 
 ---
 
-Criar redes sociais - (ADM VICTOR)
+### Criar redes sociais - (ADM VICTOR)
 
 - [ ] Twitter
 - [ ] Facebook
