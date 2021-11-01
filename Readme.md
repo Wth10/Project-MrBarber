@@ -4,7 +4,7 @@
 - [x] Fazer a tela de login/cadastro;
 - [x] Tela Cliente;
 - [x] Tela Profissional;
-- [ ] Tela Funcionario;
+- [x] Tela Funcionario;
 - [ ] Tela de Agendamento **(NECESSIDADE DE SQL);**
 - [ ] Histórico de agendamentos **(NECESSIDADE DE SQL);**
 - [ ] Cadastro de Funcionario **(NECESSIDADE DE SQL);**
@@ -23,9 +23,9 @@
 
 ### Funcionário Do Profissional:
 
-- Login
-- Consulta agendamentos
-- Historico de agendamento
+- Login;
+- Consulta agendamentos;
+- Historico de agendamento;
 
 ---
 
@@ -40,13 +40,13 @@
 
 ### Criar redes sociais - (ADM VICTOR)
 
-- [ ] Twitter
-- [ ] Facebook
-- [ ] Instagram
+- [ ] Twitter;
+- [ ] Facebook;
+- [ ] Instagram;
 
 ---
 
 ### A FAZER:
 
 - [ ] Validação dos campos email, senha **(Pouca necessidade);**
-- [ ] Tem muita coisa a fazer com o sql 😥
+- [ ] Tem muita coisa a fazer com o sql; 😥
