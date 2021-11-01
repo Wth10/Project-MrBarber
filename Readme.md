@@ -10,6 +10,8 @@
 - [ ] Cadastro de Funcionario **(NECESSIDADE DE SQL);**
 - [ ] Cadastro de Serviço **(NECESSIDADE DE SQL);**
 
+---
+
 ### PONTOS IMPORTANTES:
 
 Profissional:
@@ -25,6 +27,8 @@ Funcionário Do Profissional:
 - Consulta agendamentos
 - Historico de agendamento
 
+---
+
 Cliente:
 
 1. IMPORTANTE:
@@ -34,10 +38,10 @@ Cliente:
 - Consultar agendamentos;
 - Consulta histórico de agentamentos;
 
----
-
 **(Vai so exibir os historica como status, profissional, serviço e hora-data);**
 **_(Ver status, Ver local da barbearia, Serviço, Profissional, Data e Hora: talvez falar com o profissional via WhatsApp:);_**;
+
+---
 
 Criar redes sociais - (ADM VICTOR)
 
