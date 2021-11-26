@@ -1,56 +1,38 @@
-### Telas a fazer:
+### A fazer:
 
-- [x] Fazer a tela principal;
-- [x] Fazer a tela de login/cadastro;
-- [x] Tela Cliente;
-- [x] Tela Profissional;
-- [x] Tela Funcionario;
-- [ ] Tela de Agendamento **(TELA FEITA. FALTA DE SQL);**
-- [ ] Histórico de agendamentos **(TELA FEITA. FALTA DE SQL);**
-- [ ] Cadastro de Funcionario **(TELA FEITA. FALTA PARTE DE SQL);**
-- [ ] Cadastro de Serviço **(TELA FEITA. FALTA DE SQL);**
+- [x] Fazer a tela principal
+- [x] Fazer a tela de login/cadastro
+- [x] Cadastro de Cliente
+- [x] Cadastro de Funcionario
+- [x] Cadastro de Serviço
+- [x] Dashboard Cliente
+- [x] Dashboard Admin
+- [x] Dashboard Estabelecimento
+- [x] Histórico de agendamentos
+- [x] Tela de Agendamento
 
----
 
-### Profissional:
+#### Papéis:
 
-- Login;
-- Ver seus agendamento;
-- Cadastra serviços;
-- Cadastar funcionario;
+ADM: 
+ - Login
+ - Cadastra funcionários;
+ - Cadastra serviços;
+ - Cadastra clientes;
+ 
+Funcionário:
+ - Login
+ - Consulta agendamentos;
+ 
+Cliente:
+ - Login
+ - Consultar agendamentos (agendamentos status pendente);
+ - Consulta histórico de agentamentos (agentamentos status concluído);
+ - Agendar serviço (funcionários ativos);
+ 
+  
+Criar redes sociais - (Victor)
 
----
-
-### Funcionário Do Profissional:
-
-- Login;
-- Proximo gendamentos;
-  > NOME, CLIENTE, SERVIÇO, HORA-DATA, STATUS, WHATSAPP(BOTÃO): E DOIS BOTÕES DE CONCLUIR E CANCELAR;
-- Historico de agendamento;
-  > NOME CLIENTE, SERVIÇO, HORA-DATA, STATUS, WHATSAPP(BOTÃO);
-
----
-
-### Cliente:
-
-- Login;
-- Agendar serviço;
-- Consultar agendamentos;
-  > **(VAI EXIBIR: Hora-Data, Barbearia, Serviço, Profissional, Status, Localização, WhatsApp(BUTTON));**
-- Consulta histórico de agentamentos;
-  > **(VAI EXIBIR OS HISTORICO: Hora-Data, Barbearia, Serviço, Profissional, Status, Localização(BUTTON));**
-
----
-
-### Criar redes sociais - (ADM VICTOR)
-
-- [ ] Twitter;
-- [ ] Facebook;
-- [ ] Instagram;
-
----
-
-### A FAZER:
-
-- [ ] Validação dos campos email, senha **(Pouca necessidade);**
-- [ ] Tem muita coisa a fazer com o sql; 😥
+Twitter 
+Facebook
+Instagram

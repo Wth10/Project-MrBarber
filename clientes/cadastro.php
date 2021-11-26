@@ -1,28 +1,27 @@
-
 <?php
-require_once '../usuario/usuario.php';
+require_once './cliente.php';
 require_once '../banco/banco.php';
+
 session_start();
 
 $mensagem = "";
-//Recebe POST com os dados do login
+$divSuccess = '<div id="msg" class="msgSucesso"><i class="fa fa-check"></i>';
+$divError = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i>';
+$div = '</div>';
+//Recebe o POST com os dados do Cadastro
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    $nome = $_POST['nome'];
     $senha = $_POST['senha'];
-    $usuario = new Usuario($email, $senha);
-    if($usuario -> Logar($email, $senha)) {
-        header('Location: ../dashboard/dashboard.php');
+    $confirmar_senha = $_POST['confirmar_senha'];
+    $email = $_POST['email'];
+    $mensagem = cadastrarUsuario($nome, $senha, $confirmar_senha, $email, 2);
+    if ($mensagem == "Sucesso!") {
+        $mensagem = $divSuccess.'Sucesso! Redirecionando...'.$div;
+        $_SESSION['loginEmail'] = $email;
+        header('Refresh: 2; ../login/login.php');
+    } else {
+        $mensagem = $divError.$mensagem.$div;
     }
-    else {
-        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i> <span> Email ou Senha Inválidos!</span> </div>';
-        $_SESSION['resetEmail'] = $email;
-    }
-}
-if(!empty($_POST['email'])) {
-    $inputEmail = $_POST['email'];
-} 
-else if (!empty($_SESSION['loginEmail'])) {
-    $inputEmail = $_SESSION['loginEmail'];
 }
 ?>
 <!DOCTYPE html>
@@ -58,7 +57,7 @@ else if (!empty($_SESSION['loginEmail'])) {
             </div>
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
                 <div class="container">
-                    <a href="../#home"><img src="../assets/img/logo.png" alt="logo mr barbers" class="nav-logo"></a>
+                    <a href="../index.php#home"><img src="../assets/img/logo.png" alt="logo mr barbers" class="nav-logo"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -91,41 +90,51 @@ else if (!empty($_SESSION['loginEmail'])) {
                 </div>
             </nav>
         </header>
+
         <section class="login-section" id="login-section">
             <div class="container" id="login">
                 <div class="d-flex justify-content-center h-100">
-                    <div class="card" id="login-card">
+                    <div class="card" id="cadastro-card">
                         <div class="card-header">
-                            <h3>Faça Seu Login</h3>
+                            <h3>Faça Seu Cadastro</h3>
                         </div>
                         <div class="card-body">
-                            <form action="login.php" method="POST">
+                            <form action="cadastro.php" method="POST">
                                 <div class="input-group form-group py-1">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                    <input type="email" <?php if (!empty($inputEmail)){echo "value=\"".$inputEmail."\"";}?> name="email" class="form-control" placeholder="Email" required>
+                                    <input type="text" <?php if (!empty($_POST['nome'])){echo "value=\"".$_POST["nome"]."\"";}?> name="nome" class="form-control" placeholder="Nome" required>
+                                </div>
+                                <div class="input-group form-group py-1">
+                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    <input type="email"  <?php if (!empty($_POST['email'])){echo "value=\"".$_POST["email"]."\"";}?> name="email" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="input-group form-group py-1">
                                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
                                     <input type="password" name="senha" class="form-control" placeholder="Senha" required>
                                 </div>
-                                <div class="row align-items-center remember py-2">
-                                    <input type="checkbox">Lembrar-me
+                                <div class="input-group form-group py-1">
+                                    <span class="input-group-text"><i class="fa fa-shield"></i></span>
+                                    <input type="password" name="confirmar_senha" class="form-control" placeholder="Confirmar Senha" required>
                                 </div>
                                 <div class="form-group py-2">
-                                    <input type="submit" value="Login" class="btn float-right login_btn" >
+                                    <input type="submit" value="Cadastrar" class="btn float-right login_btn" >
                                 </div>
-                                <?php echo $mensagem;?>
+                                <!--PHP-->
+                                <?php
+                                echo $mensagem;
+                                ?>
                             </form>
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-center links">
-                                <span><a href="../clientes/cadastro.php">Criar Cadastro</a> ou <a href="../reset/reset.php">Resetar Senha</a></span>
+                               <span>Prefiro <a href="../login/login.php">Fazer Login</a></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </body>
     <!--JQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -134,9 +143,10 @@ else if (!empty($_SESSION['loginEmail'])) {
     <!--Javascript-->
     <script src="../assets/js/main.js"></script>
     <script>
-    //Remove a classe msgErro apos 4s
-        setTimeout(function() {
-            $("#msg").fadeOut().empty();
-        }, 4000);
+    //Remove a classe msgErro apos 5s
+    setTimeout(function() {
+        $("#msg").fadeOut().empty();
+    }, 3500);
     </script>
+
 </html>

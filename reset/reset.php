@@ -2,29 +2,41 @@
 <?php
 require_once '../usuario/usuario.php';
 require_once '../banco/banco.php';
+require_once '../clientes/cliente.php';
+
 session_start();
 
 $mensagem = "";
-//Recebe POST com os dados do login
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $usuario = new Usuario($email, $senha);
-    if($usuario -> Logar($email, $senha)) {
-        header('Location: ../dashboard/dashboard.php');
+    //Verifica tipo usuario = cliente
+    if (validarExistencia($email) -> fetch()[1] == 2 && validarExistencia($email) -> rowCount() > 0) {
+        $_SESSION['resetValidationID'] = validarExistencia($email) -> fetch()[0]['ID'];
+        header('Location: resetValidator.php');
     }
+    //Verifica tipo usuario = administrador
+    else if (validarExistencia($email) -> fetch()[1] == 0 && validarExistencia($email) -> rowCount() > 0) {
+        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i> <span>Você É Um Administrador, Contate O Suporte!</span> </div>';
+    }
+    //Verifica tipo usuario = funcionarios
+    else if (validarExistencia($email) -> fetch()[1] == 1  && validarExistencia($email) -> rowCount() > 0) {
+        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i> <span>Você É Um Funcionário, Contate O Administrador!</span> </div>';
+    }
+    //Usuario nao encontrado
     else {
-        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i> <span> Email ou Senha Inválidos!</span> </div>';
-        $_SESSION['resetEmail'] = $email;
+        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i> <span>Email Não Encontrado!</span> </div>';
     }
 }
 if(!empty($_POST['email'])) {
     $inputEmail = $_POST['email'];
 } 
-else if (!empty($_SESSION['loginEmail'])) {
-    $inputEmail = $_SESSION['loginEmail'];
+else if (!empty($_SESSION['resetEmail'])) {
+    $inputEmail = $_SESSION['resetEmail'];
 }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -91,35 +103,31 @@ else if (!empty($_SESSION['loginEmail'])) {
                 </div>
             </nav>
         </header>
+        </header>
         <section class="login-section" id="login-section">
             <div class="container" id="login">
                 <div class="d-flex justify-content-center h-100">
                     <div class="card" id="login-card">
                         <div class="card-header">
-                            <h3>Faça Seu Login</h3>
+                            <h3>Coloque Seu Email</h3>
                         </div>
                         <div class="card-body">
-                            <form action="login.php" method="POST">
+                            <form action="reset.php" method="POST">
                                 <div class="input-group form-group py-1">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                     <input type="email" <?php if (!empty($inputEmail)){echo "value=\"".$inputEmail."\"";}?> name="email" class="form-control" placeholder="Email" required>
                                 </div>
-                                <div class="input-group form-group py-1">
-                                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                                    <input type="password" name="senha" class="form-control" placeholder="Senha" required>
-                                </div>
-                                <div class="row align-items-center remember py-2">
-                                    <input type="checkbox">Lembrar-me
-                                </div>
                                 <div class="form-group py-2">
-                                    <input type="submit" value="Login" class="btn float-right login_btn" >
+                                    <input type="submit" value="Resetar" class="btn float-right login_btn" >
                                 </div>
-                                <?php echo $mensagem;?>
+                                <?php
+                                echo $mensagem;
+                                ?>
                             </form>
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-center links">
-                                <span><a href="../clientes/cadastro.php">Criar Cadastro</a> ou <a href="../reset/reset.php">Resetar Senha</a></span>
+                                <span><a href="../clientes/cadastro.php">Criar Cadastro</a> ou <a href="../login/login.php">Fazer Login</a></span>
                             </div>
                         </div>
                     </div>
@@ -134,9 +142,9 @@ else if (!empty($_SESSION['loginEmail'])) {
     <!--Javascript-->
     <script src="../assets/js/main.js"></script>
     <script>
-    //Remove a classe msgErro apos 4s
+    //Remove a classe msgErro apos 5s
         setTimeout(function() {
             $("#msg").fadeOut().empty();
-        }, 4000);
+        }, 5000);
     </script>
 </html>

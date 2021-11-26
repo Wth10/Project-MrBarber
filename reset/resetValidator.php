@@ -1,30 +1,35 @@
-
 <?php
 require_once '../usuario/usuario.php';
 require_once '../banco/banco.php';
+
 session_start();
 
-$mensagem = "";
-//Recebe POST com os dados do login
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $usuario = new Usuario($email, $senha);
-    if($usuario -> Logar($email, $senha)) {
-        header('Location: ../dashboard/dashboard.php');
-    }
-    else {
-        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i> <span> Email ou Senha Inválidos!</span> </div>';
-        $_SESSION['resetEmail'] = $email;
-    }
-}
-if(!empty($_POST['email'])) {
-    $inputEmail = $_POST['email'];
+$mensagem = '';
+
+if(empty($_SESSION['resetValidationID'])) {
+    header('Location: reset.php');
 } 
-else if (!empty($_SESSION['loginEmail'])) {
-    $inputEmail = $_SESSION['loginEmail'];
-}
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $data_digitada = $_POST['date'];
+    //Retorna com a data do último agendamento
+    $data_db = ultimoAgendamento($_SESSION['resetValidationID']) -> fetch()[0];
+
+    if ($data_db) {
+        $newdate = date('Y-m-d', strtotime('-8 days', strtotime($data_db)));
+        for($i = 0;$i < 15;$i++) {
+            $newdate = date('Y-m-d', strtotime('+1 days', strtotime($newdate)));
+            if($newdate == $data_digitada) {
+                $_SESSION['token'] = rand(1000,9999);
+                header('Location: resetPassword.php');
+            }
+        }
+        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i><span>Data Incorreta!</span></div>';
+    } else {
+        $mensagem = '<div id="msg" class="msgErro"><i class="fa fa-exclamation-triangle"></i><span>Contate o Administrador!</span> </div>';
+    } 
+} 
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -91,35 +96,30 @@ else if (!empty($_SESSION['loginEmail'])) {
                 </div>
             </nav>
         </header>
+        </header>
         <section class="login-section" id="login-section">
             <div class="container" id="login">
                 <div class="d-flex justify-content-center h-100">
                     <div class="card" id="login-card">
                         <div class="card-header">
-                            <h3>Faça Seu Login</h3>
+                            <h4>Qual A Data Do Seu Último Agendamento?</h4>
                         </div>
                         <div class="card-body">
-                            <form action="login.php" method="POST">
+                            <form action="resetValidator.php" method="POST">
                                 <div class="input-group form-group py-1">
-                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                    <input type="email" <?php if (!empty($inputEmail)){echo "value=\"".$inputEmail."\"";}?> name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="input-group form-group py-1">
-                                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                                    <input type="password" name="senha" class="form-control" placeholder="Senha" required>
-                                </div>
-                                <div class="row align-items-center remember py-2">
-                                    <input type="checkbox">Lembrar-me
+                                    <input type="date" name="date" class="form-control" id="data" required>
                                 </div>
                                 <div class="form-group py-2">
-                                    <input type="submit" value="Login" class="btn float-right login_btn" >
+                                    <input type="submit" value="Confirmar" class="btn float-right login_btn" >
                                 </div>
-                                <?php echo $mensagem;?>
+                                <?php
+                                echo $mensagem;
+                                ?>
                             </form>
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-center links">
-                                <span><a href="../clientes/cadastro.php">Criar Cadastro</a> ou <a href="../reset/reset.php">Resetar Senha</a></span>
+                                <span><a href="../clientes/cadastro.php">Criar Cadastro</a> ou <a href="../login/login.php">Fazer Login</a></span>
                             </div>
                         </div>
                     </div>
@@ -134,9 +134,9 @@ else if (!empty($_SESSION['loginEmail'])) {
     <!--Javascript-->
     <script src="../assets/js/main.js"></script>
     <script>
-    //Remove a classe msgErro apos 4s
+    //Remove a classe msgErro apos 5s
         setTimeout(function() {
             $("#msg").fadeOut().empty();
-        }, 4000);
+        }, 5000);
     </script>
 </html>
